@@ -1,0 +1,9 @@
+// INFO: styling for content is binded with components using the projection component, and it is varying
+.header {
+  button:not(.float-left) {
+    float: right;
+  }
+  button.float-left {
+    float: left;
+  }
+}
