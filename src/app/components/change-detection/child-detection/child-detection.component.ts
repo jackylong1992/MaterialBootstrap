@@ -10,7 +10,7 @@ interface User {
   selector: 'app-child-detection',
   templateUrl: './child-detection.component.html',
   styleUrls: ['./child-detection.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class ChildDetectionComponent implements OnInit, DoCheck, OnChanges, AfterViewChecked {
   @Input() data:User;
@@ -18,12 +18,12 @@ export class ChildDetectionComponent implements OnInit, DoCheck, OnChanges, Afte
   constructor(private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
-    // INFO: internal change from .subscribe() DOES NOT trigger Change Detection like button click, we have to run the CD manually with markForCheck()
-    // of(1,2,3).pipe(delay(2000)).subscribe((value)=> {
-    //   console.log(value);
-    //   this.tempData = '' + value;
-    //   this.ref.markForCheck();
-    // })
+    // INFO: in OnPush Mode internal change from .subscribe() DOES NOT trigger Change Detection like button click, we have to run the CD manually with markForCheck()
+    of(1,2,3).pipe(delay(2000)).subscribe((value)=> {
+      console.log(value);
+      this.tempData = '' + value;
+      // this.ref.markForCheck();
+    })
   }
 
   ngDoCheck() {
