@@ -1,0 +1,13 @@
+<p>loop-check works!</p>
+<div *ngFor='let firstLoop of data'>
+  <div>{{firstLoop.name}}</div>
+  <div>{{firstLoop.age}}</div>
+  <div *ngFor='let secondLoop of firstLoop.nestedData'>
+    <div>{{secondLoop.name}}</div>
+    <div>{{secondLoop.age}}</div>
+    <div *ngFor='let thirdLoop of secondLoop.nestedData'>
+      <div>{{secondLoop.name}}</div>
+      <div>{{secondLoop.age}}</div>
+    </div>
+  </div>
+</div>
